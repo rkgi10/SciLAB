@@ -125,16 +125,3 @@ for i=1:5
     mprintf("\n")
 end
 
-    //3
-c='A'
-for i=1:4
-    for spaces=1:4-i
-         mprintf(" ")
-     end
-     
-    for j=1:i
-        mprintf("%c ",c)
-        c=c+1
-    end 
-    mprintf("\n")
-end
