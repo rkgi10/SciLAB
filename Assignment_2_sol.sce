@@ -96,7 +96,116 @@ mprintf("Sum of first & last digit : %d",m+modulo(z,10))
 
 //ans 7 -----------------------------------
 
+//ans 8 -----------------------------------
+disp("Ans : 8")
+A=[1,4,8;5,4,7;6,7,4]
+disp(A)
 
+for i=1:3
+    for j=1:3
+        if modulo(A(i,j),5)==0 | modulo(A(i,j),7)==0 then
+            mprintf("A[%d][%d]=%d\n",i,j,A(i,j));
+        end
+    end
+end
+
+//ans 10 -----------------------------------error
+disp("Ans : 10")
+
+for i=1:3
+    for j=1:3
+        flag=1
+        
+        for i=1:sqrt(x)
+            if modulo(A(i,j),x)==0 then
+                flag=0
+            end
+        end
+            
+        if flag==1 then
+            mprintf("A[%d][%d]=%d\n",i,j,A(i,j));
+        end
+    end
+end
+
+//ans 11------------------------------------
+disp("Ans : 11")
+sums=0
+mul=1
+
+x=input("Enter any no : ")
+
+while x>=1
+    l=modulo(x,10)
+    sums=sums+int(l)
+    mul=mul*int(l)
+    x=x/10
+end
+
+if sums==mul then
+    disp("--- Perfect Number")
+else 
+    disp("--- Not Perfect No ")
+end
+
+//ans 12
+x=input("Ans : 12 : Enter the no. of terms to display finbonacci series (>24): ")
+f0=0
+f1=1
+
+disp(f0)
+disp(f1)
+
+for i=1:x-2
+    f2=f0+f1
+    f0=f1
+    f1=f2
+    disp(f2)
+end
+
+//ans 14
+A=[5,5,5;5,5,5;5,5,5]
+disp("ANs : 14 ")
+disp(A)
+s=A(1,1)+A(1,2)+A(1,3)   // sum of first raw..
+
+flag=1
+
+for i=1:3
+    s1=0   // sum of raw
+    s2=0   // sum of column
+    for j=1:3
+        s1=s1+A(i,j)
+        s2=s2+A(j,i)
+    end
+    
+    if s1~=s | s2~=s then
+        flag=0
+        break;
+    end
+end
+
+d1=0
+d2=0
+
+i=1
+j=3
+while i<=3
+    d1=d1+A(i,i)
+    d2=d2+A(i,j)
+    j=j-1
+    i=i+1
+end
+
+if  d1~=s | d2~=s then
+    flag=0
+end
+
+if flag==1 then
+    disp("Magic Square")
+else
+    disp("Not magic Square")
+end
 //ans 15
 
     //1
@@ -125,3 +234,16 @@ for i=1:5
     mprintf("\n")
 end
 
+    //3
+c=65
+for i=1:4
+    for spaces=1:4-i
+         mprintf(" ")
+     end
+     
+    for j=1:i
+        mprintf("%c ",ascii(c))
+        c=c+1
+    end 
+    mprintf("\n")
+end
