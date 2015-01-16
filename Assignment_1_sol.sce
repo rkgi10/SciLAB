@@ -26,7 +26,7 @@ disp("A.*B : ")
 disp(A.*B)
 
 //Square of individual elements
-disp("A.^A : ")
+disp("A.^2 : ")
 disp(A.^2)
 
 disp("B.^B : ")
