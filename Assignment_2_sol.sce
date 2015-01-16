@@ -109,24 +109,27 @@ for i=1:3
     end
 end
 
-//ans 10 -----------------------------------error
-disp("Ans : 10")
+//ans 10 -----------------------------------
+disp("Ans : 10------------------------------")
+
+A=[1,4,5;9,13,11;46,29,11]
 
 for i=1:3
     for j=1:3
-        flag=1
+        flag=1   // if flag=1 then prime
         
-        for i=1:sqrt(x)
-            if modulo(A(i,j),x)==0 then
+        for k=2:sqrt(A(i,j))
+            if modulo(A(i,j),k)==0 then
                 flag=0
             end
         end
             
-        if flag==1 then
+        if flag==1 & A(i,j) ~=1 then    //as 1 is not prime
             mprintf("A[%d][%d]=%d\n",i,j,A(i,j));
         end
     end
 end
+
 
 //ans 11------------------------------------
 disp("Ans : 11")
