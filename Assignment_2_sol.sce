@@ -202,7 +202,7 @@ for i=1:3
             
             for n=1:p
                 if A(i,j)==A(m,n) then
-                    A(i,j)=111111           //assigning 111111 to duplicate values
+                    A(i,j)=%nan           //It will display Nan instead of any value
                 end
             end
         end
