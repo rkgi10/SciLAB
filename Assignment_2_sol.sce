@@ -166,6 +166,41 @@ for i=1:x-2
     disp(f2)
 end
 
+//ans 13
+A=[1,5,4;6,4,7;5,4,4]
+
+disp(A)
+
+// Traversing each element of matrices by i and j
+for i=1:3
+    for j=1:3
+        
+        //Checking previous values of matrices
+        
+        flag=1
+        for m=1:i
+            
+            if i==m then
+                p=j-1
+            else
+                p=3
+            end
+            
+            for n=1:p
+                if A(i,j)==A(m,n) then
+                    A(i,j)=111111           //assigning 111111 to duplicate values
+                end
+            end
+        end
+        
+
+    end
+end
+
+
+disp(A)
+
+
 //ans 14
 A=[5,5,5;5,5,5;5,5,5]
 disp("ANs : 14 ")
