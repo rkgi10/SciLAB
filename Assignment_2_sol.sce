@@ -95,6 +95,20 @@ mprintf("Largest digit of %d : %d\n",z,largest_digit)
 mprintf("Sum of first & last digit : %d",m+modulo(z,10))
 
 //ans 7 -----------------------------------
+A=[1,5,4;6,5,4;4,6,5]
+
+disp(A)
+
+x=input("Raw Sum [1] -- Column Sum [2] : ")
+
+x1=input("First : ")
+x2=input("Second : ")
+
+if x==1 then
+    disp(A(x1,:)+A(x2,:))    // Sum of Raw
+elseif x==2 then
+    disp(A(:,x1)+A(:,x2))   // Sum of Column
+end
 
 //ans 8 -----------------------------------
 disp("Ans : 8")
