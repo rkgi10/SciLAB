@@ -135,6 +135,7 @@ for i=1:3
         for k=2:sqrt(A(i,j))
             if modulo(A(i,j),k)==0 then
                 flag=0
+                break
             end
         end
             
