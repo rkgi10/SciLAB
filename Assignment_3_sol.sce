@@ -1,3 +1,44 @@
+// ans 1.1
+
+function i=length_string(s)
+    i=1
+    while i>0 
+        if ~isalphanum(part(s,i)) then
+            break
+        end
+        
+        i=i+1
+    end
+    i=i-1
+endfunction
+
+a=input("Enter string : ","s")
+
+disp(lenl(a))
+
+// ans 1.2
+
+function r=reverseString(s)
+    i=length_string(s)
+    r=''
+    while i>0
+        if ~isalphanum(part(s,i)) then
+            break
+        end
+        
+        r=strcat([r,part(s,i)])
+        
+        i=i-1
+        
+    end
+    
+endfunction
+
+a=input("Enter string :","s")
+b=reverseString(a)
+disp(b)
+
+
 //ans 2
 
 disp("-------- GRADESHEET --------")
