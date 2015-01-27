@@ -39,6 +39,101 @@ b=reverseString(a)
 disp(b)
 
 
+
+//1.3 palindrome
+function flag=is_palindrome(s)
+    r=strrev(s)
+    if s==r then
+        flag=%t
+    else
+        flag=%f
+    end
+    
+endfunction
+
+
+//1.4
+function [b,a]=swap(a,b)
+endfunction
+
+a=5
+b=2
+[a,b]=swap(a,b)
+disp("")
+disp(a)
+disp(b)
+
+//1.5
+function C=transpose(A)
+    for i=1:3
+        for j=1:3
+            C(i,j)=A(j,i)
+        end
+    end
+
+endfunction
+
+function C=mult_matrix(A,B)
+    C=[0,0,0;0,0,0;0,0,0]
+    for i=1:3
+        for j=1:3
+            p=1,q=1
+            for k=1:3
+                C(i,j)=C(i,j)+A(i,p)*B(q,j)
+                
+                p=p+1
+                q=q+1
+            end
+        end
+    end
+endfunction
+
+//1.6
+
+function y=fact(x)
+    y=1
+    while x>0
+        y=y*x
+        x=x-1
+    end
+endfunction
+
+function fibb(x)
+    f0=0
+    f1=1
+
+    disp(f0)
+    disp(f1)
+
+    for i=1:x-2
+        f2=f0+f1
+        f0=f1
+        f1=f2
+        disp(f2)
+    end
+
+endfunction
+
+//------------------------------------------------------------------------
+
+s=input("Enter string to check palindrome :",'s')
+disp(is_palindrome(s))
+
+A=[1,2,3;
+   5,4,9;
+   6,4,7]
+   
+B=transpose(A)
+disp(B)
+
+
+x=input("Factorial of : ")
+disp(fact(x))
+
+x=input('Finonacci series terms : ')
+fibb(x)
+
+
 //ans 2
 
 disp("-------- GRADESHEET --------")
@@ -75,8 +170,7 @@ end
 
 
 //ans 3
-
-for i=1:100
+function calculator()
 
     disp("1 : Addition ")
     disp("2 : Subtraction")
@@ -100,8 +194,7 @@ for i=1:100
         else 
             disp("Incorrect Entry")
     end
+ 
+endfunction
 
-    c=input("<ENTER>")
-    
-    
-end
+calculator()
