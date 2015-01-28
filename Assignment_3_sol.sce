@@ -1,16 +1,14 @@
 // ans 1.1
 
 function i=length_string(s)
-    i=1
-    while i>0 
-        if ~isalphanum(part(s,i)) then
-            break
-        end
-        
-        i=i+1
-    end
-    i=i-1
+    p=strsplit(s)
+    i=max(strindex(s,p($)))
 endfunction
+
+a=input("Enter string : ","s")
+
+disp(length_string(a))
+
 
 a=input("Enter string : ","s")
 
