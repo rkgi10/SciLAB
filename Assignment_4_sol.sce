@@ -39,3 +39,17 @@ x=-100:1:100
 y=(x.*abs(x))./(1+x.^2)
 plot(x,y,'ro-')
 
+// graph 3
+clear;    // clear previous graphs   
+//clc;   // to clear console
+scf(3);  // new window
+x=linspace(-4,4,41)
+a=.5
+y1=1./(1+exp(a.*x))
+a=1
+y2=1./(1+exp(a.*x))
+a=2
+y3=1./(1+exp(a.*x))
+
+plot(x,y1,'b+',x,y2,'g+',x,y3,'ro')
+
