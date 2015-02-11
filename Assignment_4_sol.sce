@@ -30,3 +30,12 @@ plot(r,theta)
 a=gca();
 a.grid=[1,1]
 xtitle('','x axix','y axix')
+
+// graph 2
+clear;    // clear previous graphs   
+//clc;   // to clear console
+scf(2);  // new window
+x=-100:1:100
+y=(x.*abs(x))./(1+x.^2)
+plot(x,y,'ro-')
+
