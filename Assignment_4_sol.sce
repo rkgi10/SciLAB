@@ -53,3 +53,31 @@ y3=1./(1+exp(a.*x))
 
 plot(x,y1,'b+',x,y2,'g+',x,y3,'ro')
 
+// graph 4
+clear;    // clear previous graphs   
+//clc;   // to clear console
+
+// in same graph
+scf(4);  // new window
+x=-2*%pi:.2:2*%pi
+y=sin(x)
+
+plot(x,sin(x),x,cos(x))
+a=gca()
+a.x_location='middle'
+legend(['sin (x)','cos (x)'])
+
+// in diffrent graph
+scf(5)
+plot(x,sin(x))
+legend(['sin (x)'])
+a=gca()
+a.x_location='middle'
+
+scf(6)
+plot(x,cos(x),'r')
+legend(['cos (x)'])
+a=gca()
+a.x_location='middle'
+
+
