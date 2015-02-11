@@ -125,4 +125,17 @@ a=gca()
 a.x_location='middle'
 legend(['cot (x)'])
 
+// graph 6
+clear;    // clear previous graphs   
+//clc;   // to clear console
+
+// in same graph
+scf(8);  // new window
+x=-10:.001:10
+
+y1=(x./2)-5
+y2=x.^2+x.*2-15
+
+plot(x,y1,x,y2)
+legend(['x/2 - 5 '], [ 'x.^2 + x.*2 -15'])
 
