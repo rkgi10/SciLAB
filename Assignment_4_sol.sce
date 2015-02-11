@@ -80,4 +80,49 @@ legend(['cos (x)'])
 a=gca()
 a.x_location='middle'
 
+// graph 5
+clear;    // clear previous graphs   
+//clc;   // to clear console
+
+// in same graph
+scf(7);  // new window
+x=-%pi:.2:%pi
+y=sin(x)
+
+subplot(2,3,1)
+plot(x,sin(x))
+a=gca()
+a.x_location='middle'
+legend(['sin (x)'])
+
+subplot(2,3,2)
+plot(x,cos(x))
+a=gca()
+a.x_location='middle'
+legend(['cos (x)'])
+
+subplot(2,3,3)
+plot(x,tan(x))
+a=gca()
+a.x_location='middle'
+legend(['tan (x)'])
+
+subplot(2,3,4)
+plot(x,csch(x))
+a=gca()
+a.x_location='middle'
+legend(['cosec (x)'])
+
+subplot(2,3,5)
+plot(x,sec(x))
+a=gca()
+a.x_location='middle'
+legend(['sec (x)'])
+
+subplot(2,3,6)
+plot(x,cotd(x))
+a=gca()
+a.x_location='middle'
+legend(['cot (x)'])
+
 
