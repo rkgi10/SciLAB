@@ -18,7 +18,7 @@ subplot(3,3,4)
 plot(log(x),log(y),'r+-',log(y),log(x),'go-')
 
 // axis transferation
-a=gca();
+a=gca();              // get current axis
 a.x_location='top'    // bottom , top , middle , origin  <-- values
 a.y_location='middle'
 a.grid=[1,2]          // grid[x,y,z]
