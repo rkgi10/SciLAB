@@ -121,6 +121,7 @@ function multiply_callback(handles)
     operation='*';
     global x;
     x=strtod(handles.ans.string);
+    handles.ans.string='';
 endfunction
 
 
