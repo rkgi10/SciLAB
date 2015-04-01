@@ -43,69 +43,92 @@ endfunction
 global operation;
 global x;
 global y;
+global display;
+
 
 operation='';
 x=0;
 y=0;
+display=0;
 
 function one_callback(handles)
 //Write your callback for  one  here
-    handles.ans.string=handles.ans.string+'1';
+    global display;
+    display=display*10+1;
+    handles.ans.string=string(display);
 endfunction
 
 
 function two_callback(handles)
 //Write your callback for  two  here
-    handles.ans.string=handles.ans.string+'2';
+    global display;
+    display=display*10+2;
+    handles.ans.string=string(display);
 endfunction
 
 
 function three_callback(handles)
 //Write your callback for  three  here
-    handles.ans.string=handles.ans.string+'3';
+    global display;
+    display=display*10+3;
+    handles.ans.string=string(display);
 endfunction
 
 
 function four_callback(handles)
 //Write your callback for  four  here
-    handles.ans.string=handles.ans.string+'4';
+    global display;
+    display=display*10+4;
+    handles.ans.string=string(display);
 endfunction
 
 
 function five_callback(handles)
 //Write your callback for  five  here
-    handles.ans.string=handles.ans.string+'5';
+    global display;
+    display=display*10+5;
+    handles.ans.string=string(display);
 
 endfunction
 
 
 function six_callback(handles)
 //Write your callback for  six  here
-    handles.ans.string=handles.ans.string+'6';
+    global display;
+    display=display*10+6;
+    handles.ans.string=string(display);
 endfunction
 
 
 function seven_callback(handles)
 //Write your callback for  seven  here
-    handles.ans.string=handles.ans.string+'7';
+    global display;
+    display=display*10+7;
+    handles.ans.string=string(display);
 endfunction
 
 
 function eight_callback(handles)
 //Write your callback for  eight  here
-    handles.ans.string=handles.ans.string+'8';
+    global display;
+    display=display*10+8;
+    handles.ans.string=string(display);
 endfunction
 
 
 function nine_callback(handles)
 //Write your callback for  nine  here
-    handles.ans.string=handles.ans.string+'9';
+    global display;
+    display=display*10+9;
+    handles.ans.string=string(display);
 endfunction
 
 
 function zero_callback(handles)
 //Write your callback for  zero  here
-    handles.ans.string=handles.ans.string+'0';
+    global display;
+    display=display*10;
+    handles.ans.string=string(display);
 endfunction
 
 
@@ -113,36 +136,47 @@ function sum_callback(handles)
 //Write your callback for  sum  here
     global operation;
     global x;
+    global y;
+    global display;
     
-    temp=strtod(handles.ans.string);
-    x=evaluate(x,temp,operation);
+    y=strtod(handles.ans.string);
+    
+    x=evaluate(x,y,operation);
     operation='+';
    
-    handles.ans.string='';
+    handles.ans.string=string(x);
+    display=0;
 endfunction
 
 
 function subtract_callback(handles)
 //Write your callback for  subtract  here
         global operation;
-        
+        global y;
         global x;
-        temp=strtod(handles.ans.string);
-        x=evaluate(x,temp,operation);
+        global display;
+        
+        y=strtod(handles.ans.string);
+        x=evaluate(x,y,operation);
         operation='-';
-        handles.ans.string='';
+        handles.ans.string=string(x);
+
+        display=0;
 endfunction
 
 
 function multiply_callback(handles)
 //Write your callback for  multiply  here
     global operation;
-    
+    global y;
     global x;
-    temp=strtod(handles.ans.string);
-    x=evaluate(x,temp,operation);
+    global display;
+    y=strtod(handles.ans.string);
+    x=evaluate(x,y,operation);
     operation='*';
-    handles.ans.string='';
+    handles.ans.string=string(x);
+
+    display=0;
 endfunction
 
 
@@ -150,10 +184,15 @@ function division_callback(handles)
 //Write your callback for  division  here
     global operation;
     global x;
-    temp=strtod(handles.ans.string);
-    x=evaluate(x,temp,operation);
+    global y;
+    global display;
+
+    y=strtod(handles.ans.string);
+    x=evaluate(x,y,operation);
     operation='/';
-    handles.ans.string='';
+    handles.ans.string=string(x);
+
+    display=0;
 endfunction
 
 
@@ -162,13 +201,13 @@ function equalTo_callback(handles)
     global operation;
     global x;
     global y;
-    temp=strtod(handles.ans.string);
+    global display;
    
-    x=evaluate(x,temp,operation);
+   y=strtod(handles.ans.string);
+    x=evaluate(x,y,operation);
     handles.ans.string=string(x);
-    operation='';
-    x=y;
-    y=0;
+    operation='equalto';
+    display=0;
 endfunction
 
 
@@ -178,6 +217,7 @@ function clear_callback(handles)
         global x=0;
         global y=0;
         global operation='';
+        global display=0;
 endfunction
 
 
