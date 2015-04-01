@@ -23,16 +23,30 @@ handles.multiply=uicontrol(f,'unit','normalized','BackgroundColor',[0.6,0.6,0.6]
 handles.division=uicontrol(f,'unit','normalized','BackgroundColor',[0.6,0.6,0.6],'Enable','on','FontAngle','normal','FontName','helvetica','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[0,0,0],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.6203125,0.3909524,0.05,0.0535714],'Relief','raised','SliderStep',[0.01,0.1],'String','/','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','division','Callback','division_callback(handles)')
 handles.equalTo=uicontrol(f,'unit','normalized','BackgroundColor',[0.6,0.6,0.6],'Enable','on','FontAngle','normal','FontName','helvetica','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[0,0,0],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.3,0.3276190,0.375,0.0654762],'Relief','raised','SliderStep',[0.01,0.1],'String','=','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','equalTo','Callback','equalTo_callback(handles)')
 handles.clear=uicontrol(f,'unit','normalized','BackgroundColor',[0.6,0.6,0.6],'Enable','on','FontAngle','normal','FontName','helvetica','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[0,0,0],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.509375,0.3989683,0.0896875,0.0515873],'Relief','raised','SliderStep',[0.01,0.1],'String','CE','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','clear','Callback','clear_callback(handles)')
-handles.ans=uicontrol(f,'unit','normalized','BackgroundColor',[0.8,0.8,0.8],'Enable','on','FontAngle','normal','FontName','helvetica','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[0,0,0],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.296875,0.7202381,0.3703125,0.0833333],'Relief','flat','SliderStep',[0.01,0.1],'String','','Style','text','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','Calculator','Callback','')
+handles.ans=uicontrol(f,'unit','normalized','BackgroundColor',[0.8,0.8,0.8],'Enable','on','FontAngle','normal','FontName','helvetica','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[0,0,0],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.296875,0.7202381,0.3703125,0.0833333],'Relief','flat','SliderStep',[0.01,0.1],'String','0','Style','text','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','Calculator','Callback','')
 
 
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
+
+function a=evaluate(a,b,operation)
+    if(operation=='') then a=b;
+    elseif(operation=='+') then a=a+b;    
+    elseif (operation=='-') then a=a-b;
+    elseif(operation=='*') then a=a*b;
+    elseif(operation=='/') then a=a/b;
+    end 
+endfunction
+
 global operation;
 global x;
 global y;
+
+operation='';
+x=0;
+y=0;
 
 function one_callback(handles)
 //Write your callback for  one  here
@@ -99,18 +113,23 @@ function sum_callback(handles)
 //Write your callback for  sum  here
     global operation;
     global x;
+    
+    temp=strtod(handles.ans.string);
+    x=evaluate(x,temp,operation);
     operation='+';
-    x=strtod(handles.ans.string);
-    handles.ans.string="";
+   
+    handles.ans.string='';
 endfunction
 
 
 function subtract_callback(handles)
 //Write your callback for  subtract  here
         global operation;
-        operation='-';
+        
         global x;
-        x=strtod(handles.ans.string);
+        temp=strtod(handles.ans.string);
+        x=evaluate(x,temp,operation);
+        operation='-';
         handles.ans.string='';
 endfunction
 
@@ -118,9 +137,11 @@ endfunction
 function multiply_callback(handles)
 //Write your callback for  multiply  here
     global operation;
-    operation='*';
+    
     global x;
-    x=strtod(handles.ans.string);
+    temp=strtod(handles.ans.string);
+    x=evaluate(x,temp,operation);
+    operation='*';
     handles.ans.string='';
 endfunction
 
@@ -128,9 +149,10 @@ endfunction
 function division_callback(handles)
 //Write your callback for  division  here
     global operation;
-    operation='/';
     global x;
-    x=strtod(handles.ans.string);
+    temp=strtod(handles.ans.string);
+    x=evaluate(x,temp,operation);
+    operation='/';
     handles.ans.string='';
 endfunction
 
@@ -140,13 +162,11 @@ function equalTo_callback(handles)
     global operation;
     global x;
     global y;
-    y=strtod(handles.ans.string);
-    if  operation=='+' then handles.ans.string=string(x+y);
-    elseif  operation=='-' then handles.ans.string=string(x-y);
-    elseif  operation=='*' then handles.ans.string=string(x*y);
-    elseif  operation=='/' then handles.ans.string=string(x/y);
-    end
-    
+    temp=strtod(handles.ans.string);
+   
+    x=evaluate(x,temp,operation);
+    handles.ans.string=string(x);
+    operation='';
     x=y;
     y=0;
 endfunction
