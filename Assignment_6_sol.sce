@@ -1,11 +1,3 @@
-//--------------------------------------------------------
-
-
-Some bug in the code... will be fixed soon
-
-
-//---------------------------------------------------------
-
 // FILE HANDELING IN SCILAB
 
 // data in file is like
@@ -33,10 +25,10 @@ function read_file()
         
         avg=(mark1 + mark2 + mark3)/3;
         
-        disp("***");
+        mprintf("%s %s %f\n",no,name,avg);
     end
     
-    disp("----");
+
     
     mclose(fp);
 endfunction
@@ -129,7 +121,7 @@ function copy_file()
 endfunction
 
 function delete_file()    // delete record from file
-
+    
     fp=mopen("data1.txt","rt");    
     fp2=mopen("temp.txt","wt");             
     
@@ -166,22 +158,19 @@ function delete_file()    // delete record from file
         
         if delete_rollno=="NULL" & delete_name==name then    // search by name
             found=%t;
-            continue;
-        end
-        
-        if delete_name=="NULL" & delete_rollno==no then   // search by roll no
+        elseif delete_name=="NULL" & delete_rollno==no then
             found=%t;
-            continue;
+        else
+            mfprintf(fp2,"%s %s %d %d %d\n",no,name,mark1,mark2,mark3);
         end
         
-        mfprintf(fp2,"%s %s %d %d %d\n",no,name,mark1,mark2,mark3);
         
     end
     
     mclose(fp);
     mclose(fp2);
     
-    movefile("temp.txt","data.txt");
+    movefile("temp.txt","data1.txt");
     mdelete("temp.txt");
     
 endfunction
@@ -199,21 +188,21 @@ while flag
     select choice
         case 1 then
             read_file();
-            break;
+           
         case 2 then
             write_file();
-            break;
+            
         case 3 then
             search_file();
-            break;
+           
         case 4 then
             delete_file();
-            break;
+            
         case 5 then
             copy_file();
-            break;
+            
         case 6 then
             flag=%f;
-            break;
+            
     end
 end
