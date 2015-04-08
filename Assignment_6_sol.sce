@@ -3,6 +3,8 @@
 // data in file is like
 // No Name Mark1 Mark2 Mark3
 
+// NOTE : write full file path instead of just file name if any error occurs !!
+
 
 function menu()
     disp("1 : Read File");
